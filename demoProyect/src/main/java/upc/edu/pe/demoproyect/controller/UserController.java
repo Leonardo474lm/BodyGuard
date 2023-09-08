@@ -23,12 +23,28 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping
-    public void Insert(@RequestBody UserDTO userDTO) {
-        ModelMapper m = new ModelMapper();
-        User user = m.map(userDTO, User.class);
-        userService.Insert(user);
+    public ResponseEntity<UserDTO> Insert(@RequestBody UserDTO userDTO) {
+    User user;
+    UserDTO userDTO1;
+        try {
+            user = convertToEntity(userDTO);
+            user = userService.Insert(user);
+            userDTO1 = ConvertToDTO(user);
+        }
+        catch(Exception e){
+            //logeas el error
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido registrar");
+        }
+        return new ResponseEntity<UserDTO>(userDTO1,HttpStatus.OK);
+
     }
 //convertid///////////////////////////////////
+
+    private User convertToEntity(UserDTO authorDTO){
+        ModelMapper modelMapper = new ModelMapper();
+        User user = modelMapper.map(authorDTO, User.class);
+        return user;
+    }
     private User convertToUser(UserDTO userDTO) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(userDTO, User.class);
@@ -63,10 +79,6 @@ public class UserController {
         return new ResponseEntity<>(ListDto, HttpStatus.OK);
 
     }
-
-
-
-
     @DeleteMapping("/{id}")
     public void Delete(@PathVariable("id") Integer id) {
 

@@ -15,8 +15,8 @@ public class UserService implements UserInterface {
     private UserRepository userRepository;
 
     @Override
-    public void Insert(User user) {
-        userRepository.save(user);
+    public User Insert(User user) {
+        return userRepository.save(user);
     }
 
     @Override

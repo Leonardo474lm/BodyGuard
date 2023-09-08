@@ -6,7 +6,7 @@ import upc.edu.pe.demoproyect.entities.User;
 import java.util.List;
 
 public interface UserInterface {
-    public void Insert(User user);
+    public User Insert(User user);
 
     public List<User> List();
 

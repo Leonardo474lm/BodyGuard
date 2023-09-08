@@ -32,6 +32,7 @@ public class User {
     private String phone;
     @Column(name = "Password",  length = 20)
     private String password;
+
     ///esto se tiene que cambiar luego para la implementacion de las tablas respectivas
     @Column(name = "ID_city",  length = 50)
     private String id_City;
