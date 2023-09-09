@@ -10,10 +10,10 @@ public class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "Country",length = 50)
+    @Column(name = "Country",length = 50, nullable = false)
     private String country;
-    @Column (name = "City", length = 50)
+    @Column (name = "City", length = 50, nullable = false)
     private String City;
-    @Column(name = "Address", length = 120)
+    @Column(name = "Address", length = 120, nullable = false)
     private String address;
 }
