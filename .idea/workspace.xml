@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ad64a8c-31ec-4417-b826-f9358d1f59dc" name="Changes" comment="" />
+    <list default="true" id="3ad64a8c-31ec-4417-b826-f9358d1f59dc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/demoProyect/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/demoProyect/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -39,6 +42,19 @@
         </map>
       </branch-storage>
     </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="feature/cesar" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -65,6 +81,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "feature/cesar",
     "last_opened_file_path": "C:/Users/USER/OneDrive - Universidad Peruana de Ciencias/Arquitecrura de aplicaciones web/Week 4/AuthorsApp",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -98,7 +115,7 @@
       <workItem from="1694227584491" duration="8657000" />
       <workItem from="1694237653099" duration="1004000" />
       <workItem from="1694289577421" duration="209000" />
-      <workItem from="1694452985303" duration="9372000" />
+      <workItem from="1694452985303" duration="11293000" />
     </task>
     <servers />
   </component>
