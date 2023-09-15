@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
@@ -25,15 +26,8 @@ public class Bodyguard {
     @JoinColumn(name = "User_id", referencedColumnName = "id")
     private User user;
 
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-    @JoinTable(
-            name = "bodyguards_specializations",
-            joinColumns = @JoinColumn(name = "bodyguards_id"),
-            inverseJoinColumns = @JoinColumn(name = "specializations_id")
-    )
-    private Set<Specialization> specializationSet = new HashSet<>();
 
-    @OneToMany(mappedBy = "bodyguard", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Service> services;
+    @ManyToMany
+    Set<Specialization> likedCourses;
 
 }

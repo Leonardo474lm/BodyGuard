@@ -19,6 +19,8 @@ public class Specialization {
     private String name;
     private String description;
 
-    @ManyToMany(mappedBy = "especializaciones")
-    private Set<Bodyguard> bodyguardSet = new HashSet<>();
+    @ManyToMany
+    Set<Bodyguard> likes;
+
+
 }

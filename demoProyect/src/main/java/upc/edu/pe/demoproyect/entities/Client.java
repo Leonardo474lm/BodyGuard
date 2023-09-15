@@ -20,7 +20,6 @@ public class Client {
     @JoinColumn(name = "User_id", referencedColumnName = "id")
     private User user;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Service> services;
+
 
 }

@@ -17,6 +17,7 @@ public class Payment_method {
     private int id;
     private String methods;
 
-    @OneToMany(mappedBy = "payment_method", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Service> services;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "payment_method", cascade = CascadeType.ALL)
+    List<Service> services;
+
 }
