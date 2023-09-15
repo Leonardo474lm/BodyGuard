@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Data
@@ -18,6 +19,7 @@ public class Bodyguard {
     private int Id;
     @Column(name = "price_per_hour")
     private BigDecimal price_per_hour;
+    private Boolean st_activo;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "User_id", referencedColumnName = "id")
@@ -30,4 +32,8 @@ public class Bodyguard {
             inverseJoinColumns = @JoinColumn(name = "specializations_id")
     )
     private Set<Specialization> specializationSet = new HashSet<>();
+
+    @OneToMany(mappedBy = "bodyguard", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Service> services;
+
 }

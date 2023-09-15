@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
@@ -16,26 +17,26 @@ public class Service {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-    private String type_service;
-    private Date start_date;
-    private Date end_date;
-    private Time hours;
+    private LocalDate date;
+    private Time hours_start;
+    private int hours;
+    private String location_encuentro;
+    //activo (cuando el cliente pago) o inactivo (cuando el cliente aun no pago)
+    private Boolean st_pagado;
+    //el cliente anulo el servicio
+    private Boolean st_anulado;
+    private int review;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "client_id", referencedColumnName = "id")
-    private Client client;
+    @ManyToOne()
+    @JoinColumn(name = "client_id")
+    private Client clients;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "bodyguard_id", referencedColumnName = "id")
-    private Bodyguard bodyguard;
+    @ManyToOne()
+    @JoinColumn(name = "bodyguard_id")
+    private Bodyguard bodyguards;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "review_id", referencedColumnName = "id")
-    private Review review;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "location_id", referencedColumnName = "id")
-    private Location location;
-
+    @ManyToOne()
+    @JoinColumn(name = "payment_id")
+    private Payment_method payment_method;
 
 }

@@ -10,17 +10,13 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "clients")
-public class Client {
+@Entity(name = "payment_methods")
+public class Payment_method {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int id;
+    private String methods;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "User_id", referencedColumnName = "id")
-    private User user;
-
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "payment_method", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Service> services;
-
 }
