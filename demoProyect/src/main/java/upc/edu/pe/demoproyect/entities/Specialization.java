@@ -19,8 +19,7 @@ public class Specialization {
     private String name;
     private String description;
 
-    @ManyToMany
-    Set<Bodyguard> likes;
-
+    @ManyToMany(mappedBy = "specialization")
+    Set<Bodyguard> bodiguard;
 
 }

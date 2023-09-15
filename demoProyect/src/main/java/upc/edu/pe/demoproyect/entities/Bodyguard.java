@@ -28,6 +28,10 @@ public class Bodyguard {
 
 
     @ManyToMany
-    Set<Specialization> likedCourses;
+    @JoinTable(
+            name = "Bodyguards_specialization",
+            joinColumns = @JoinColumn(name = "bodyguard_id"),
+            inverseJoinColumns = @JoinColumn(name = "specialization_id"))
+    Set<Specialization> specialization;
 
 }
