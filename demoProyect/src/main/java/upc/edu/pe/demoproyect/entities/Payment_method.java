@@ -10,7 +10,8 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "payment_methods")
+@Entity
+@Table(name = "payment_methods")
 public class Payment_method {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

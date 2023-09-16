@@ -10,16 +10,15 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "clients")
+@Entity
+@Table(name = "clients")
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "User_id", referencedColumnName = "id")
     private User user;
-
 
 
 }

@@ -11,6 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import upc.edu.pe.demoproyect.dto.UserDTO;
+import upc.edu.pe.demoproyect.entities.Services;
 import upc.edu.pe.demoproyect.entities.User;
 import upc.edu.pe.demoproyect.service.UserService;
 
@@ -18,11 +19,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/UserController")
+@RequestMapping("/User")
 public class UserController {
     @Autowired
     private UserService userService;
-    @PostMapping
+    @PostMapping("/insert")
     public void Insert(@RequestBody UserDTO userDTO) {
         ModelMapper m = new ModelMapper();
         User user = m.map(userDTO, User.class);
@@ -41,14 +42,14 @@ public class UserController {
     }
 
 
-    @GetMapping("/list1")
+
     public List<UserDTO> ConvertToListDTO(List<User> list) {
         return list.stream().map(this::ConvertToDTO).collect(Collectors.toList());
     }
 
 
     ///////////////////////////////////////
-    @GetMapping("/list2")
+    @GetMapping("/list")
     public ResponseEntity< List<UserDTO>> listar() {
 
         List<User> list;
@@ -67,12 +68,19 @@ public class UserController {
 
 
 
-    @DeleteMapping("/{id}")
-    public void Delete(@PathVariable("id") Integer id) {
-
+    @DeleteMapping("/delete/{id}")
+    User  Delete(@PathVariable("id") Integer id) {
+        User user;
+        try{
+            user = userService.Delete(id);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se puede eliminar");
+        }
+        return user;
     }
 
-    @PutMapping
+    @PutMapping("/update/{id}")
     public ResponseEntity<User> Update(@RequestBody User user) {
         User user1;
         try {
