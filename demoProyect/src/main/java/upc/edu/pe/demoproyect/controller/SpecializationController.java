@@ -50,7 +50,7 @@ public class SpecializationController {
         }
         return new ResponseEntity<SpecializationDTO>(dto,HttpStatus.OK);
     }
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<SpecializationDTO> Update(@RequestBody SpecializationDTO specializationDTO) {
         Specialization specialization;
         SpecializationDTO specializationDTO1=null;

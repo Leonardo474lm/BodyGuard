@@ -48,7 +48,7 @@ public class BodyguardController {
         return new ResponseEntity<BodyguardDTO>(dto, HttpStatus.OK);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<BodyguardDTO> Update(@RequestBody BodyguardDTO bodyguardDTO) {
         Bodyguard bodyguard1;
         BodyguardDTO bodyguardDTO1TO = null;
@@ -78,7 +78,12 @@ public class BodyguardController {
     }
 
     @GetMapping("/ListbyDistrict/{district}")
-    public List<Bodyguard>getListByDistrict(@PathVariable String district){
+    public List<Bodyguard> getListByDistrict(@PathVariable String district) {
         return bodyguardService.getBodyguardsByAddress(district);
+    }
+
+    @GetMapping("/getReviewBodyguard/{id}")
+    public float getAverageReviewByBodyguardId(@PathVariable int id) {
+        return bodyguardService.getAverageReviewByBodyguardId(id);
     }
 }

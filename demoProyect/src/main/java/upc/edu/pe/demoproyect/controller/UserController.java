@@ -18,10 +18,9 @@ import upc.edu.pe.demoproyect.service.UserService;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController
-@RequestMapping("/User")
+
 public class UserController {
-    @Autowired
+
     private UserService userService;
     @PostMapping("/insert")
     public void Insert(@RequestBody UserDTO userDTO) {

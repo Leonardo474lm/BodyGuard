@@ -56,6 +56,8 @@ public class Services {
     @JoinColumn(name = "payment_id")
     private Payment payment_method;
 
+    @Column(name = "review")
+    private int review;
 
 
 }

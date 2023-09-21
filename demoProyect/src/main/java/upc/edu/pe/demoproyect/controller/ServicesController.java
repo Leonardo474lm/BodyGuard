@@ -88,6 +88,12 @@ public class ServicesController {
         List<Services> services = servicesService.getServicesByClientId(clientId);
         return new ResponseEntity<>(services, HttpStatus.OK);
     }
+    @GetMapping("/bodiguard/{bodyid}")
+    public ResponseEntity<List<Services>> findServicesByBodyguardID(@PathVariable int bodyid) {
+        List<Services> services = servicesService.getServicesByClientId(bodyid);
+        return new ResponseEntity<>(services, HttpStatus.OK);
+    }
+
 
     @GetMapping("HourTotal/{bodyID}")
     public ResponseEntity<Integer> getTotalHoursWorkedForBodyguard(@PathVariable int bodyID) {

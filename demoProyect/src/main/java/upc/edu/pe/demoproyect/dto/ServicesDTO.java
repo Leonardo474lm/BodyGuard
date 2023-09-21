@@ -37,4 +37,5 @@ public class ServicesDTO {
 
     private Payment payment_method;
 
+    private int review;
 }

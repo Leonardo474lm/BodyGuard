@@ -24,16 +24,17 @@ public class Bodyguard {
     private float price_per_hour;
     @Column(name = "st_activo")
     private Boolean st_activo;
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "User_id", referencedColumnName = "id")
     private User user;
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "specializations", referencedColumnName = "id")
     private Specialization specialization;
     @Column(name = "district")
     private String district;
-
-
+    @Column(name = "star")
+    //promedio de calificacion (5)
+    private transient int star;
 
 
 

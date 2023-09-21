@@ -13,6 +13,7 @@ import java.util.List;
 public class BodyguardService implements BodyguarInterface {
     @Autowired
     private BodyguardRepository bodyguardRepository;
+
     @Override
     public Bodyguard Insert(Bodyguard bodyguard) {
         return bodyguardRepository.save(bodyguard);
@@ -29,13 +30,18 @@ public class BodyguardService implements BodyguarInterface {
                 orElseThrow(() -> new Exception("No se encontró entidad"));
         return bodyguardRepository.save(bodyguard);
     }
+
     public List<Bodyguard> getBodyguardsBySpecialization(int specializationId) {
         return bodyguardRepository.findBySpecializationId(specializationId);
     }
-    public List<Bodyguard> getBodyguardsByAddress( String address) {
+
+    public List<Bodyguard> getBodyguardsByAddress(String address) {
         // Utiliza el método del repositorio para buscar guardaespaldas por dirección
         return bodyguardRepository.findByDistrict(address);
     }
 
+    public float getAverageReviewByBodyguardId(int id) {
+        return bodyguardRepository.getAverageReviewByBodyguardId(id);
+    }
 
 }

@@ -12,5 +12,6 @@ public interface BodyguardRepository extends JpaRepository<Bodyguard,Integer> {
     @Query("SELECT b FROM Bodyguard b WHERE b.specialization.id = :specializationId")
     List<Bodyguard> findBySpecializationId(@Param("specializationId") int specializationId);
     List<Bodyguard> findByDistrict(String address);
-
+    @Query("SELECT AVG(s.review) FROM Services s WHERE s.bodyguards.id = :bodyguardId")
+    float getAverageReviewByBodyguardId(@Param("bodyguardId") int bodyguardId);
 }

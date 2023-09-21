@@ -55,7 +55,7 @@ public class PaymentController {
         }
         return new ResponseEntity<PaymentDTO>(dto,HttpStatus.OK);
     }
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<PaymentDTO> Update(@RequestBody PaymentDTO paymentDTO) {
         Payment payment;
         PaymentDTO paymentDTO1=null;

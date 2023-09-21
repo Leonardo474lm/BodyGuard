@@ -51,7 +51,7 @@ public class ClientController {
         return new ResponseEntity<ClientDTO>(dto,HttpStatus.OK);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<Client> Update(@RequestBody Client client) {
         Client client1;
         try {
