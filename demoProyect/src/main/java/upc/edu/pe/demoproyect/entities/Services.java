@@ -55,9 +55,7 @@ public class Services {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "payment_id")
     private Payment payment_method;
-    @JoinColumn(name = "star")
 
-    private  int star;
 
 
 }

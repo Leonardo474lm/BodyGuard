@@ -32,8 +32,8 @@ public class Bodyguard {
     private Specialization specialization;
     @Column(name = "district")
     private String district;
-    @Column(name = "star")
-private transient int star;
+
+
 
 
 
