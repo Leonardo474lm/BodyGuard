@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import upc.edu.pe.demoproyect.dto.ClientDTO;
 import upc.edu.pe.demoproyect.entities.Client;
+import upc.edu.pe.demoproyect.entities.Services;
 import upc.edu.pe.demoproyect.entities.User;
 import upc.edu.pe.demoproyect.interfaceservice.ClientInterface;
 import upc.edu.pe.demoproyect.repository.ClientRepository;
@@ -18,7 +19,7 @@ public class ClientService implements ClientInterface {
     private ClientRepository clientRepository;
 
     @Override
-    public Client Insert(Client client)  {
+    public Client Insert(Client client) {
         return clientRepository.save(client);
     }
 
@@ -28,22 +29,22 @@ public class ClientService implements ClientInterface {
     }
 
     @Override
-    public Client Update(Client client)throws Exception{
+    public Client Update(Client client) throws Exception {
         clientRepository.findById(client.getId()).
                 orElseThrow(() -> new Exception("No se encontró entidad"));
         return clientRepository.save(client);
     }
 
-public ClientDTO findBYDNI(int id){
-      return  convertToDto(clientRepository.findById(id).get());
+    public ClientDTO findBYDNI(int id) {
+        return convertToDto(clientRepository.findById(id).get());
 
-}
-    @Override
-    public Client Find_id(int id) {
-        return null;
     }
+
     private ClientDTO convertToDto(Client client) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(client, ClientDTO.class);
     }
+
+
+
 }

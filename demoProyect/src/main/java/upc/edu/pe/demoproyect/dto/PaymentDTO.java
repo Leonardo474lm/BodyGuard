@@ -1,15 +1,13 @@
 package upc.edu.pe.demoproyect.dto;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import upc.edu.pe.demoproyect.entities.User;
+
 @Data
 @NoArgsConstructor
-public class ClientDTO {
-
+public class PaymentDTO {
     private int id;
-    private User user;
 
-
+    private String methods;
 }

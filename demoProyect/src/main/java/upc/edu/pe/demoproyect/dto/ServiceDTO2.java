@@ -1,20 +1,14 @@
 package upc.edu.pe.demoproyect.dto;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+
 import upc.edu.pe.demoproyect.entities.Bodyguard;
 import upc.edu.pe.demoproyect.entities.Client;
 import upc.edu.pe.demoproyect.entities.Payment;
 
 import java.time.LocalDate;
 
-@Data
-@NoArgsConstructor
-
-public class ServicesDTO {
+public class ServiceDTO2 {
     private int id;
 
     private LocalDate date;
@@ -30,11 +24,13 @@ public class ServicesDTO {
     private Boolean st_pagado;
 
     private Boolean st_anulado;
-
+    @JsonIgnore
     private Client clients;
-
+    @JsonIgnore
     private Bodyguard bodyguards;
-
+    @JsonIgnore
     private Payment payment_method;
+    private transient int star;
+
 
 }

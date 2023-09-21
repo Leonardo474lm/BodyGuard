@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -18,19 +19,33 @@ import java.util.Set;
 public class Bodyguard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int id;
     @Column(name = "price_per_hour")
-    private BigDecimal price_per_hour;
+    private float price_per_hour;
     @Column(name = "st_activo")
     private Boolean st_activo;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "User_id", referencedColumnName = "id")
     private User user;
-    @ManyToMany
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(name = "specializations", referencedColumnName = "id")
+    private Specialization specialization;
+    @Column(name = "district")
+    private String district;
+    @Column(name = "star")
+private transient int star;
+
+
+
+
+
+
+/*    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
             name = "Bodyguards_specialization",
-            joinColumns = @JoinColumn(name = "bodyguard_id"),
-            inverseJoinColumns = @JoinColumn(name = "specialization_id"))
-    Set<Specialization> specialization;
+            joinColumns = @JoinColumn(name = "bodyguard_id",referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "specialization_id",referencedColumnName = "id"))
+    private List<Specialization> specialization;
 
+*/
 }

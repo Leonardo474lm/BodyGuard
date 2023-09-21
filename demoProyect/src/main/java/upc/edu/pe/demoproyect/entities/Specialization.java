@@ -16,11 +16,16 @@ import java.util.Set;
 public class Specialization {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
+    private int id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "specialization")
-    Set<Bodyguard> bodiguard;
+
+  /*  @ManyToMany(mappedBy = "specialization")
+    Set<Bodyguard> bodiguard;*/
 
 }

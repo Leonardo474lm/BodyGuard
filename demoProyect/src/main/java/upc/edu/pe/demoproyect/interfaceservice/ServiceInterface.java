@@ -6,7 +6,7 @@ import java.util.List;
 public interface ServiceInterface {
 
     public List<Services> findServices();
-    public Services registerServices(Services services) throws Exception;
+    public Services registerServices(Services services);
 
     public Services updateServices(Services services) throws Exception;
 

@@ -33,4 +33,7 @@ public class User {
     private String phone;
     @Column(name = "Password",  length = 20)
     private String password;
+    @Column(name = "age",  length = 20)
+    private  int age;
+
 }

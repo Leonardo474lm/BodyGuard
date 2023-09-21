@@ -11,5 +11,5 @@ public interface ClientInterface {
 
     public Client Update(Client client) throws Exception;
 
-    public Client Find_id(int id);
+
 }

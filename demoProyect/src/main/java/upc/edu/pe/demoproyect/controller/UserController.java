@@ -37,8 +37,7 @@ public class UserController {
 
     private UserDTO ConvertToDTO(User user) {
         ModelMapper modelMapper = new ModelMapper();
-        UserDTO userDTO=modelMapper.map(user, UserDTO.class);
-        return userDTO;
+        return modelMapper.map(user, UserDTO.class);
     }
 
 
@@ -67,7 +66,7 @@ public class UserController {
 
 
 
-
+//no deberia de estar
     @DeleteMapping("/delete/{id}")
     User  Delete(@PathVariable("id") Integer id) {
         User user;

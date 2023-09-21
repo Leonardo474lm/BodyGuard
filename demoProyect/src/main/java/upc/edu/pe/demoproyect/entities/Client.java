@@ -15,8 +15,8 @@ import java.util.List;
 public class Client {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
-    @OneToOne(cascade = CascadeType.ALL)
+    private int id;
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "User_id", referencedColumnName = "id")
     private User user;
 

@@ -18,7 +18,7 @@ public class ServiceService implements ServiceInterface {
         return servicesRepository.findAll();
     }
 
-    public Services registerServices(Services services) throws Exception {
+    public Services registerServices(Services services) {
 
         return servicesRepository.save(services);
     }
@@ -41,7 +41,33 @@ public class ServiceService implements ServiceInterface {
         return servicesRepository.findByDate(fecha);
 
     }
-;
+
+    public List<Services> getServicesByClientId(int clientId) {
+        return servicesRepository.findServicesByClientId(clientId);
+    }
+
+    public int getTotalHoursWorkedForBodyguard(int bodyguardId) {
+        return servicesRepository.calculateTotalHoursWorked(bodyguardId);
+    }
+
+
+    public float getTotalEarningsForBodyguard(int bodyguardId) {
+        return servicesRepository.calculateTotalEarningsForBodyguard(bodyguardId);
+    }
+
+    //solo calcula la cantidad de clientes que ha atendido y no la cantidad de servicios atendidos
+    public Long countClientsServedByBodyguard(Integer bodyguardId) {
+        return servicesRepository.countDistinctClientsForBodyguard(bodyguardId);
+    }
+
+
+
+
+
+
+
+
+
 
 
 /*        public Services findByStartdate (LocalDate fecha){

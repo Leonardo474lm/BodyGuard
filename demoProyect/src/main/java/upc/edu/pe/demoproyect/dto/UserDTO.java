@@ -26,7 +26,7 @@ public class UserDTO {
 
     private String password;
     ///esto se tiene que cambiar luego para la implementacion de las tablas respectivas
-
+    private String district;
 
 
 

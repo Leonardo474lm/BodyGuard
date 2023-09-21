@@ -2,11 +2,14 @@ package upc.edu.pe.demoproyect.controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import upc.edu.pe.demoproyect.dto.ClientDTO;
 import upc.edu.pe.demoproyect.dto.ServicesDTO;
+import upc.edu.pe.demoproyect.entities.Client;
 import upc.edu.pe.demoproyect.entities.Services;
 import upc.edu.pe.demoproyect.service.ServiceService;
 
@@ -20,106 +23,103 @@ import java.util.stream.Collectors;
 public class ServicesController {
     @Autowired
     private ServiceService servicesService;
-
-    @GetMapping("/find")
-    public ResponseEntity<List<ServicesDTO>> findServices()
-    {
-        List<Services> list;
-        List<ServicesDTO> listdto = null;
-        try {
-            list = servicesService.findServices();
-            listdto = convertToListDto(list);
-        }catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lista no disponible");
-        }
-        return new ResponseEntity<>(listdto,HttpStatus.OK);
-
-    }
-
-    @GetMapping("/findbyfecha/{date}")
-    public ResponseEntity<ServicesDTO> findByStarDate(@PathVariable(value = "date") LocalDate date)
-    {
-        Services services;
-        ServicesDTO servicesDTO = null;
-        try {
-            services = servicesService.findByStartdate(date);
-            servicesDTO = convertToDto(services);
-        }catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lista no disponible");
-        }
-        return new ResponseEntity<>(servicesDTO,HttpStatus.OK);
-
-    }
-
-    /*@GetMapping("/calcuTimes")
-    public ResponseEntity<ServicesDTO> calcuTiempos()
-    {
-        /*Services services;
-        ServicesDTO servicesDTO = null;
-        try {
-            services = servicesService.findByStartdate(date);
-            servicesDTO = convertToDto(services);
-        }catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lista no disponible");
-        }
-        return new ResponseEntity<>(servicesDTO,HttpStatus.OK);
-        return new ResponseEntity<>(servicesService.obtenerSumaDePuntajes(),HttpStatus.OK);
-    }*/
-   /* @GetMapping("/suma")
-    public Integer sumarPuntajes() {
-        return servicesService.obtenerSumaDePuntajes();
-    }
-*/
-    @PostMapping("/register")
-    ResponseEntity<ServicesDTO> registerServices(@RequestBody ServicesDTO servicesDTO){
+    @PostMapping("/insert")
+    ResponseEntity<ServicesDTO> registerServices(@RequestBody ServicesDTO servicesDTO) {
         Services services;
         ServicesDTO dto;
         try {
             services = convertToEntity(servicesDTO);
             services = servicesService.registerServices(services);
             dto = convertToDto(services);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             //logeas el error
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido registrar");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se ha podido registrar");
         }
-        return new ResponseEntity<ServicesDTO>(dto,HttpStatus.OK);
+        return new ResponseEntity<ServicesDTO>(dto, HttpStatus.OK);
     }
-    @PutMapping("/update")
-    public ResponseEntity<Services> updateServices(@RequestBody Services services){
+    @GetMapping("/list")
+    public ResponseEntity<List<Services>> List() {
+        List<Services> services = null;
+
+        services = servicesService.findServices();
+        return new ResponseEntity<List<Services>>(services, HttpStatus.OK);
+    }
+    @PutMapping("/Update")
+    public ResponseEntity<ServicesDTO> updateServices(@RequestBody Services services) {
         Services services1;
+        ServicesDTO servicesDTO=null;
         try {
             services1 = servicesService.updateServices(services);
-        }catch(Exception e){
+            servicesDTO=convertToDto(services);
+        } catch (Exception e) {
             //aqui se graba en el log el error tecnico que lo tiene e
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se puede actualizar");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se puede actualizar");
         }
-        return new ResponseEntity<Services>(services1, HttpStatus.OK);
+        return new ResponseEntity<ServicesDTO>(servicesDTO, HttpStatus.OK);
     }
 
-    @DeleteMapping("/author/{id}")
-    Services delete(@PathVariable(value = "id") int id){
+    @DeleteMapping("/Delete/{id}")
+    Services delete(@PathVariable(value = "id") int id) {
         Services services;
-        try{
+        try {
             services = servicesService.deleteServices(id);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se puede eliminar");
         }
-        catch(Exception e){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se puede eliminar");
+        return services;
+    }
+    @GetMapping("/findbyfecha/{date}")
+    public ResponseEntity<ServicesDTO> findByStarDate(@PathVariable(value = "date") LocalDate date) {
+        Services services;
+        ServicesDTO servicesDTO = null;
+        try {
+            services = servicesService.findByStartdate(date);
+            servicesDTO = convertToDto(services);
+        } catch (Exception e) {
+            //aqui se graba en el log el error tecnico que lo tiene e
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se puede actualizar");
         }
-        return services ;
+        return new ResponseEntity<ServicesDTO>(servicesDTO, HttpStatus.OK);
     }
 
-    private Services convertToEntity(ServicesDTO servicesDTO){
-        ModelMapper modelMapper = new ModelMapper();
-        Services post = modelMapper.map(servicesDTO, Services.class);
-        return post;
+    // Endpoint para obtener los servicios de un cliente por su ID
+    @GetMapping("/client/{clientId}")
+    public ResponseEntity<List<Services>> getServicesByClientId(@PathVariable int clientId) {
+        List<Services> services = servicesService.getServicesByClientId(clientId);
+        return new ResponseEntity<>(services, HttpStatus.OK);
     }
-    private ServicesDTO convertToDto(Services services){
-        ModelMapper modelMapper = new ModelMapper();
-        ServicesDTO servicesDTO = modelMapper.map(services,ServicesDTO.class);
-        return servicesDTO;
+
+    @GetMapping("HourTotal/{bodyID}")
+    public ResponseEntity<Integer> getTotalHoursWorkedForBodyguard(@PathVariable int bodyID) {
+        int totalhora = servicesService.getTotalHoursWorkedForBodyguard(bodyID);
+        return new ResponseEntity<>(totalhora, HttpStatus.OK);
     }
-    private List<ServicesDTO> convertToListDto(List<Services> list){
+
+    @GetMapping("Pagototal/{bodyguardId}")
+    public float getTotalEarningsForBodyguard(@PathVariable Integer bodyguardId) {
+        // Utiliza el método del repositorio para calcular el monto total ganado
+        return servicesService.getTotalEarningsForBodyguard(bodyguardId);
+    }
+
+    @GetMapping("/countclientesByBodyguard/{bodyguardId}")
+    public Long countClientsServedByBodyguard(@PathVariable Integer bodyguardId) {
+        // Utiliza el método del repositorio para contar la cantidad de clientes atendidos
+        return servicesService.countClientsServedByBodyguard(bodyguardId);
+    }
+
+
+    //_____________________________________________________________________________||||||
+    private Services convertToEntity(ServicesDTO servicesDTO) {
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper.map(servicesDTO, Services.class);
+    }
+
+    private ServicesDTO convertToDto(Services services) {
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper.map(services, ServicesDTO.class);
+    }
+
+    private List<ServicesDTO> convertToListDto(List<Services> list) {
         return list.stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
