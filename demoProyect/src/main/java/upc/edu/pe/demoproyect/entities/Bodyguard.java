@@ -5,12 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,17 +14,17 @@ public class Bodyguard {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name = "price_per_hour")
+    @Column(name = "price_per_hour", nullable = false)
     private float price_per_hour;
-    @Column(name = "st_activo")
+    @Column(name = "st_activo", nullable = false)
     private Boolean st_activo;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "User_id", referencedColumnName = "id")
+    @JoinColumn(name = "User_id", referencedColumnName = "id", nullable = false)
     private User user;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "specializations", referencedColumnName = "id")
+    @JoinColumn(name = "specializations", referencedColumnName = "id", nullable = false)
     private Specialization specialization;
-    @Column(name = "district")
+    @Column(name = "district", nullable = false)
     private String district;
     @Column(name = "star")
     //promedio de calificacion (5)

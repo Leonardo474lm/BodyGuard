@@ -19,4 +19,6 @@ public class BodyguardDTO {
     private Specialization specialization;
 
     private String district;
+    private transient int star;
+
 }

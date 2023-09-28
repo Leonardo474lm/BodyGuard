@@ -90,7 +90,7 @@ public class ServicesController {
     }
     @GetMapping("/bodiguard/{bodyid}")
     public ResponseEntity<List<Services>> findServicesByBodyguardID(@PathVariable int bodyid) {
-        List<Services> services = servicesService.getServicesByClientId(bodyid);
+        List<Services> services = servicesService.findServicesByBodyguardID(bodyid);
         return new ResponseEntity<>(services, HttpStatus.OK);
     }
 

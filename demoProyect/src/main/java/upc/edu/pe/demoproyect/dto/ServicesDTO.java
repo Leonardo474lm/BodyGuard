@@ -2,6 +2,10 @@ package upc.edu.pe.demoproyect.dto;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,17 +23,24 @@ public class ServicesDTO {
 
     private LocalDate date;
 
+
     private int hours_start;
+
 
     private int hours;
 
+
     private String location;
+
 
     private Boolean st_aceptar;
 
+
     private Boolean st_pagado;
 
+
     private Boolean st_anulado;
+
 
     private Client clients;
 

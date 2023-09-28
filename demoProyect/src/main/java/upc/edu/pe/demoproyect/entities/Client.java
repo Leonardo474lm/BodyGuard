@@ -17,7 +17,7 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinColumn(name = "User_id", referencedColumnName = "id")
+    @JoinColumn(name = "User_id", referencedColumnName = "id",nullable = false)
     private User user;
 
 

@@ -27,36 +27,36 @@ public class Services {
     @Column(name = "hours_start")
     private int hours_start;
 
-    @Column(name = "hours")
+    @Column(name = "hours",nullable = false)
     private int hours;
 
-    @Column(name = "location")
+    @Column(name = "location",nullable = false)
     private String location;
 
-    @Column(name = "st_aceptar")
+    @Column(name = "st_aceptar",nullable = false)
 
     private Boolean st_aceptar;
-    @Column(name = "st_pagado")
+    @Column(name = "st_pagado",nullable = false)
     //activo (cuando el cliente pago) o inactivo (cuando el cliente aun no pago)
     private Boolean st_pagado;
 
-    @Column(name = "st_anulado")
+    @Column(name = "st_anulado",nullable = false)
     //el cliente anulo el servicio
     private Boolean st_anulado;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id",nullable = false)
     private Client clients;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "bodyguard_id")
+    @JoinColumn(name = "bodyguard_id",nullable = false)
     private Bodyguard bodyguards;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "payment_id")
+    @JoinColumn(name = "payment_id",nullable = false)
     private Payment payment_method;
 
-    @Column(name = "review")
+    @Column(name = "review",nullable = false)
     private int review;
 
 
