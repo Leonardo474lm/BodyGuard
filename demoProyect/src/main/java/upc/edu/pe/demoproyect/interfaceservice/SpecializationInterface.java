@@ -11,5 +11,6 @@ public interface SpecializationInterface {
 
     public Specialization Update(Specialization specialization) throws Exception;
     public Specialization Delete(int id) throws Exception;
+    public Specialization listById(int id) throws Exception;
 
 }

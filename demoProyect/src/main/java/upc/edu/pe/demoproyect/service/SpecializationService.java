@@ -37,4 +37,9 @@ public class SpecializationService implements SpecializationInterface {
         specializationRepository.delete(specialization);
         return specialization;
     }
+    @Override
+    public Specialization listById(int id) throws Exception{
+        return specializationRepository.findById(id).
+                orElseThrow(()->new Exception("No se encontro el usuario"));
+    }
 }

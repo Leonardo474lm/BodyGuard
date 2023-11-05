@@ -13,6 +13,8 @@ import upc.edu.pe.demoproyect.service.SpecializationService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/Specialization")
 public class SpecializationController {
@@ -85,5 +87,17 @@ public class SpecializationController {
         }
         return specialization ;
     }
+    @GetMapping("/{id}")
+    Specialization listById(@PathVariable(value = "id") int id){
+        Specialization specialization;
+        try{
+            specialization = specializationService.listById(id);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
+        }
+        return specialization ;
+    }
+
 
 }
