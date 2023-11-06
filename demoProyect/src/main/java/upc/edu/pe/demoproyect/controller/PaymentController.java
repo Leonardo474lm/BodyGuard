@@ -16,6 +16,7 @@ import upc.edu.pe.demoproyect.service.PaymentService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/Payment")
 public class PaymentController {

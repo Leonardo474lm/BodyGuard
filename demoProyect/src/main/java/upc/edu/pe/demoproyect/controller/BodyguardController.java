@@ -15,6 +15,8 @@ import upc.edu.pe.demoproyect.service.BodyguardService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/Bodyguard")
 public class BodyguardController {

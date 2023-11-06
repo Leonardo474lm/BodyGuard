@@ -13,6 +13,7 @@ import upc.edu.pe.demoproyect.service.ClientService;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @RequestMapping("/Clients")
 public class ClientController {
