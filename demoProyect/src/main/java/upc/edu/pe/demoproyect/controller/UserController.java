@@ -11,40 +11,24 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import upc.edu.pe.demoproyect.dto.UserDTO;
+import upc.edu.pe.demoproyect.entities.Services;
 import upc.edu.pe.demoproyect.entities.User;
 import upc.edu.pe.demoproyect.service.UserService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController
-@RequestMapping("/UserController")
-public class UserController {
-    @Autowired
-    private UserService userService;
-    @PostMapping
-    public ResponseEntity<UserDTO> Insert(@RequestBody UserDTO userDTO) {
-    User user;
-    UserDTO userDTO1;
-        try {
-            user = convertToEntity(userDTO);
-            user = userService.Insert(user);
-            userDTO1 = ConvertToDTO(user);
-        }
-        catch(Exception e){
-            //logeas el error
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se ha podido registrar");
-        }
-        return new ResponseEntity<UserDTO>(userDTO1,HttpStatus.OK);
 
+public class UserController {
+
+    private UserService userService;
+    @PostMapping("/insert")
+    public void Insert(@RequestBody UserDTO userDTO) {
+        ModelMapper m = new ModelMapper();
+        User user = m.map(userDTO, User.class);
+        userService.Insert(user);
     }
 //convertid///////////////////////////////////
-
-    private User convertToEntity(UserDTO authorDTO){
-        ModelMapper modelMapper = new ModelMapper();
-        User user = modelMapper.map(authorDTO, User.class);
-        return user;
-    }
     private User convertToUser(UserDTO userDTO) {
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(userDTO, User.class);
@@ -52,19 +36,18 @@ public class UserController {
 
     private UserDTO ConvertToDTO(User user) {
         ModelMapper modelMapper = new ModelMapper();
-        UserDTO userDTO=modelMapper.map(user, UserDTO.class);
-        return userDTO;
+        return modelMapper.map(user, UserDTO.class);
     }
 
 
-    @GetMapping("/list1")
+
     public List<UserDTO> ConvertToListDTO(List<User> list) {
         return list.stream().map(this::ConvertToDTO).collect(Collectors.toList());
     }
 
 
     ///////////////////////////////////////
-    @GetMapping("/list2")
+    @GetMapping("/list")
     public ResponseEntity< List<UserDTO>> listar() {
 
         List<User> list;
@@ -79,12 +62,23 @@ public class UserController {
         return new ResponseEntity<>(ListDto, HttpStatus.OK);
 
     }
-    @DeleteMapping("/{id}")
-    public void Delete(@PathVariable("id") Integer id) {
 
+
+
+//no deberia de estar
+    @DeleteMapping("/delete/{id}")
+    User  Delete(@PathVariable("id") Integer id) {
+        User user;
+        try{
+            user = userService.Delete(id);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se puede eliminar");
+        }
+        return user;
     }
 
-    @PutMapping
+    @PutMapping("/update/{id}")
     public ResponseEntity<User> Update(@RequestBody User user) {
         User user1;
         try {
@@ -95,5 +89,4 @@ public class UserController {
         }
         return new ResponseEntity<User>(user,HttpStatus.OK);
     }
-
 }

@@ -2,17 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-<<<<<<< HEAD
-<<<<<<< HEAD
       <profile default="true" name="Default" enabled="true" />
-    </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="demoProyect" target="17" />
-    </bytecodeTargetLevel>
-=======
-=======
-      <profile default="true" name="Default" enabled="true" />
->>>>>>> feature/cesar
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -25,6 +15,5 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="demoProyect" options="-parameters" />
     </option>
->>>>>>> 6c90cc9096edc51b57798af2e1fefdccfa0aab8d
   </component>
 </project>

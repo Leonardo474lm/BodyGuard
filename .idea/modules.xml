@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/demoProyect/demoProyect.iml" filepath="$PROJECT_DIR$/demoProyect/demoProyect.iml" />
-=======
       <module fileurl="file://$PROJECT_DIR$/.idea/BodyGuard.iml" filepath="$PROJECT_DIR$/.idea/BodyGuard.iml" />
-<<<<<<< HEAD
->>>>>>> 6c90cc9096edc51b57798af2e1fefdccfa0aab8d
-=======
-      <module fileurl="file://$PROJECT_DIR$/demoProyect/demoProyect.iml" filepath="$PROJECT_DIR$/demoProyect/demoProyect.iml" />
->>>>>>> feature/cesar
     </modules>
   </component>
 </project>
