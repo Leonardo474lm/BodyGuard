@@ -13,15 +13,21 @@ import org.springframework.web.server.ResponseStatusException;
 import upc.edu.pe.demoproyect.dto.UserDTO;
 import upc.edu.pe.demoproyect.entities.Services;
 import upc.edu.pe.demoproyect.entities.User;
+import upc.edu.pe.demoproyect.interfaceservice.UserInterface;
 import upc.edu.pe.demoproyect.service.UserService;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@CrossOrigin(origins = {"http://localhost:4200"})
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     private UserService userService;
+
+    @Autowired
+    private UserInterface ui;
     @PostMapping("/insert")
     public void Insert(@RequestBody UserDTO userDTO) {
         ModelMapper m = new ModelMapper();
@@ -88,5 +94,19 @@ public class UserController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se puede actualizar");
         }
         return new ResponseEntity<User>(user,HttpStatus.OK);
+    }
+    @GetMapping("/mail/{email}")
+    public ResponseEntity<UserDTO> getByEmail(@PathVariable(name="email") String email) {
+        UserDTO dto;
+        User user ;
+        try{
+            user = ui.getByEmail(email);
+            dto=ConvertToDTO(user);
+        }
+        catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
+        }
+        return new ResponseEntity<>(dto, HttpStatus.OK);
+
     }
 }
