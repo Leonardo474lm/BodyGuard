@@ -5,46 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ad64a8c-31ec-4417-b826-f9358d1f59dc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/controller/BodyguardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/controller/ClientController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/controller/PaymentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/controller/ServicesController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/controller/SpecializationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/dto/BodyguardDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/dto/ClientDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/dto/PaymentDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/dto/ServiceDTO2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/dto/ServicesDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/dto/SpecializationDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/entities/Bodyguard.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/entities/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/entities/Payment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/entities/Services.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/entities/Specialization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/interfaceservice/BodyguarInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/interfaceservice/ClientInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/interfaceservice/PaymentInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/interfaceservice/ServiceInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/interfaceservice/SpecializationInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/repository/BodyguardRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/repository/ClientRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/repository/PaymentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/repository/ServicesRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/repository/SpecializationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/service/BodyguardService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/service/ClientService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/service/PaymentService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/service/ServiceService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/service/SpecializationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demoProyect/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/demoProyect/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/dto/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/dto/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/interfaceservice/UserInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/demoProyect/src/main/java/upc/edu/pe/demoproyect/interfaceservice/UserInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/demoProyect/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/demoProyect/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,31 +71,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "Merging feature/cesar",
-    "last_opened_file_path": "C:/Users/USER/OneDrive - Universidad Peruana de Ciencias/Arquitecrura de aplicaciones web/Week 4/AuthorsApp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "spring.configuration.checksum": "9cdd41c5b77a555f34de7e3806833257",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/cesar&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/USER/OneDrive - Universidad Peruana de Ciencias/Arquitecrura de aplicaciones web/Week 4/AuthorsApp&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;9cdd41c5b77a555f34de7e3806833257&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="DemoProyectApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
@@ -158,6 +119,7 @@
       <workItem from="1694237653099" duration="1004000" />
       <workItem from="1694289577421" duration="209000" />
       <workItem from="1694452985303" duration="11293000" />
+      <workItem from="1699381794831" duration="2108000" />
     </task>
     <servers />
   </component>
