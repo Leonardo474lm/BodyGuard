@@ -54,18 +54,18 @@ public class UserController {
 
     ///////////////////////////////////////
     @GetMapping("/list")
-    public ResponseEntity< List<UserDTO>> listar() {
+    public ResponseEntity< List<User>> listar() {
 
         List<User> list;
         List<UserDTO> ListDto = null;
         try {
-            list = userService.List();
+            list = ui.List();
             ListDto = ConvertToListDTO(list);
         } catch (Exception e) {
 
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Lista no encontrada");
         }
-        return new ResponseEntity<>(ListDto, HttpStatus.OK);
+        return new ResponseEntity<>(list, HttpStatus.OK);
 
     }
 
@@ -76,7 +76,7 @@ public class UserController {
     User  Delete(@PathVariable("id") Integer id) {
         User user;
         try{
-            user = userService.Delete(id);
+            user = ui.Delete(id);
         }
         catch(Exception e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se puede eliminar");
@@ -88,7 +88,7 @@ public class UserController {
     public ResponseEntity<User> Update(@RequestBody User user) {
         User user1;
         try {
-            user1 = userService.Update(user);
+            user1 = ui.Update(user);
         }catch(Exception e){
             //aqui se graba en el log el error tecnico que lo tiene e
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se puede actualizar");
@@ -96,7 +96,7 @@ public class UserController {
         return new ResponseEntity<User>(user,HttpStatus.OK);
     }
     @GetMapping("/mail/{email}")
-    public ResponseEntity<UserDTO> getByEmail(@PathVariable(name="email") String email) {
+    public ResponseEntity<User> getByEmail(@PathVariable(name="email") String email) {
         UserDTO dto;
         User user ;
         try{
@@ -106,7 +106,7 @@ public class UserController {
         catch (Exception e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
         }
-        return new ResponseEntity<>(dto, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.OK);
 
     }
 }
