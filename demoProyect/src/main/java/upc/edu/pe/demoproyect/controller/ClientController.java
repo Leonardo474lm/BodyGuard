@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import upc.edu.pe.demoproyect.dto.ClientDTO;
 import upc.edu.pe.demoproyect.entities.Client;
+import upc.edu.pe.demoproyect.entities.Specialization;
 import upc.edu.pe.demoproyect.service.ClientService;
 
 import java.util.List;
@@ -72,5 +73,15 @@ public class ClientController {
         client = clientService.List();
         return new ResponseEntity<List<Client>>(client, HttpStatus.OK);
     }
-
+    @GetMapping("/{id}")
+    Client listById(@PathVariable(value = "id") int id){
+        Client client;
+        try{
+            client = clientService.listById(id);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
+        }
+        return client ;
+    }
 }

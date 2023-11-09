@@ -38,4 +38,9 @@ public class PaymentService  implements PaymentInterface {
         paymentRepository.delete(payment);
         return payment;
     }
+
+    @Override
+    public Payment listById(int id) throws Exception {
+        return paymentRepository.findById(id).get();
+    }
 }

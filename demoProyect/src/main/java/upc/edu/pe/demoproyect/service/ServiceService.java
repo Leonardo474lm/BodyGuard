@@ -42,6 +42,11 @@ public class ServiceService implements ServiceInterface {
 
     }
 
+    @Override
+    public Services listById(int id) throws Exception {
+        return servicesRepository.findById(id).get();
+    }
+
     public List<Services> getServicesByClientId(int clientId) {
         return servicesRepository.findServicesByClientId(clientId);
     }

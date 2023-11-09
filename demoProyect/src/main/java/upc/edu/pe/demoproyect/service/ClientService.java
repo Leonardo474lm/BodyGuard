@@ -35,6 +35,11 @@ public class ClientService implements ClientInterface {
         return clientRepository.save(client);
     }
 
+    @Override
+    public Client listById(int id) throws Exception {
+        return clientRepository.findById(id).get();
+    }
+
     public ClientDTO findBYDNI(int id) {
         return convertToDto(clientRepository.findById(id).get());
 

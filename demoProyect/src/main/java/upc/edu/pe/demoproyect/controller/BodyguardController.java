@@ -10,6 +10,7 @@ import upc.edu.pe.demoproyect.dto.BodyguardDTO;
 
 import upc.edu.pe.demoproyect.entities.Bodyguard;
 
+import upc.edu.pe.demoproyect.entities.Specialization;
 import upc.edu.pe.demoproyect.service.BodyguardService;
 
 import java.util.List;
@@ -65,7 +66,17 @@ public class BodyguardController {
         return new ResponseEntity<BodyguardDTO>(bodyguardDTO1TO, HttpStatus.OK);
 
     }
-
+    @GetMapping("/{id}")
+    Bodyguard listById(@PathVariable(value = "id") int id){
+        Bodyguard bodyguard;
+        try{
+            bodyguard = bodyguardService.listById(id);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
+        }
+        return bodyguard ;
+    }
     @GetMapping("/List")
     public ResponseEntity<List<Bodyguard>> List() {
         List<Bodyguard> bodyguards = null;

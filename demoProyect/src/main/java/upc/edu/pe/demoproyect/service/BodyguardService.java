@@ -31,6 +31,11 @@ public class BodyguardService implements BodyguarInterface {
         return bodyguardRepository.save(bodyguard);
     }
 
+    @Override
+    public Bodyguard listById(int id) throws Exception {
+        return bodyguardRepository.findById(id).get();
+    }
+
     public List<Bodyguard> getBodyguardsBySpecialization(int specializationId) {
         return bodyguardRepository.findBySpecializationId(specializationId);
     }

@@ -11,6 +11,7 @@ import upc.edu.pe.demoproyect.dto.ClientDTO;
 import upc.edu.pe.demoproyect.dto.ServicesDTO;
 import upc.edu.pe.demoproyect.entities.Client;
 import upc.edu.pe.demoproyect.entities.Services;
+import upc.edu.pe.demoproyect.entities.Specialization;
 import upc.edu.pe.demoproyect.service.ServiceService;
 
 import java.time.LocalDate;
@@ -57,7 +58,17 @@ public class ServicesController {
         }
         return new ResponseEntity<ServicesDTO>(servicesDTO, HttpStatus.OK);
     }
-
+    @GetMapping("/{id}")
+    Services listById(@PathVariable(value = "id") int id){
+        Services services;
+        try{
+            services = servicesService.listById(id);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
+        }
+        return services ;
+    }
     @DeleteMapping("/Delete/{id}")
     Services delete(@PathVariable(value = "id") int id) {
         Services services;
