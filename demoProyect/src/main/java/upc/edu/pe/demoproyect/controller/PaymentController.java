@@ -88,7 +88,7 @@ public class PaymentController {
             payment = paymentService.listById(id);
         }
         catch(Exception e){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el metodo de pago");
         }
         return payment ;
     }

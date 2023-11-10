@@ -13,4 +13,6 @@ import java.util.List;
 public interface ClientRepository extends JpaRepository<Client, Integer> {
   //US-07 lista de servicios segun el cliente
 
+    public Client findClientByUserId(int id);
+
 }

@@ -80,7 +80,18 @@ public class ClientController {
             client = clientService.listById(id);
         }
         catch(Exception e){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el cliente");
+        }
+        return client ;
+    }
+    @GetMapping("/user/{id}")
+    Client getByUserId(@PathVariable(value = "id") int id){
+        Client client;
+        try{
+            client = clientService.getByUserId(id);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el cliente");
         }
         return client ;
     }
