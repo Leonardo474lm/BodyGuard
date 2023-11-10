@@ -5,4 +5,5 @@ import org.springframework.stereotype.Repository;
 import upc.edu.pe.demoproyect.entities.Role;
 @Repository
 public interface RoleRepository extends JpaRepository<Role,Long> {
+    public Role findByUser_Id(int id);
 }

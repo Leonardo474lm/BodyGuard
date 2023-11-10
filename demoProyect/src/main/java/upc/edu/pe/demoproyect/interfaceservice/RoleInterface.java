@@ -8,4 +8,5 @@ public interface RoleInterface {
     public void insert(Role role);
 
     List<Role> list();
+    public Role getRolByUserId(int id);
 }

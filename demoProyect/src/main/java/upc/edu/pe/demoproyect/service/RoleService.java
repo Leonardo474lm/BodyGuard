@@ -21,4 +21,10 @@ roleRepository.save(role);
     public List<Role> list() {
         return roleRepository.findAll();
     }
+
+    @Override
+    public Role getRolByUserId(int id)
+    {
+        return  roleRepository.findByUser_Id(id);
+    }
 }
