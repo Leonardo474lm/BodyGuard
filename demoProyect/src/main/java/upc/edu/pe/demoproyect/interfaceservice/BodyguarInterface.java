@@ -18,4 +18,6 @@ public interface BodyguarInterface {
     public Bodyguard listById(int id) throws Exception;
     Integer getAverageReviewByBodyguardId(int bodyguardId);
 
+    public Bodyguard getByUserEmail(String mail);
+
 }

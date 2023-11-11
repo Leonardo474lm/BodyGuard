@@ -99,4 +99,16 @@ public class BodyguardController {
     public Integer getAverageReviewByBodyguardId(@PathVariable int id) {
         return bodyguardService.getAverageReviewByBodyguardId(id);
     }
+    @GetMapping("/usermail/{mail}")
+    public ResponseEntity<Bodyguard> getByUserEmail(@PathVariable(value = "mail")String mail ){
+        Bodyguard bodyguard;
+        try{
+            bodyguard = bodyguardService.getByUserEmail(mail);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
+        }
+        return new ResponseEntity<Bodyguard>(bodyguard,HttpStatus.OK);
+
+    }
 }

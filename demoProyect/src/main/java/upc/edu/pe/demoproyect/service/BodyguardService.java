@@ -40,6 +40,10 @@ public class BodyguardService implements BodyguarInterface {
     public Bodyguard listById(int id) throws Exception {
         return bodyguardRepository.findById(id).get();
     }
+    @Override
+    public Bodyguard getByUserEmail(String mail){
+        return bodyguardRepository.findByUserEmail(mail);
+    }
 
     public List<Bodyguard> getBodyguardsBySpecialization(int specializationId) {
         return bodyguardRepository.findBySpecializationId(specializationId);
@@ -50,8 +54,10 @@ public class BodyguardService implements BodyguarInterface {
         return bodyguardRepository.findByDistrict(address);
     }
 
-    public Integer getAverageReviewByBodyguardId(int id) {
-        return bodyguardRepository.getAverageReviewByBodyguardId(id);
-    }
+        public Integer getAverageReviewByBodyguardId(int id) {
+            Integer averageReview = bodyguardRepository.getAverageReviewByBodyguardId(id);
+            return averageReview != null ? averageReview : 0;
+
+        }
 
 }

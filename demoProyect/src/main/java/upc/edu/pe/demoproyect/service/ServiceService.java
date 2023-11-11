@@ -8,6 +8,7 @@ import upc.edu.pe.demoproyect.interfaceservice.ServiceInterface;
 import upc.edu.pe.demoproyect.repository.ServicesRepository;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -71,8 +72,7 @@ public class ServiceService implements ServiceInterface {
         return servicesRepository.countDistinctClientsForBodyguard(bodyguardId);
     }
     public List<Services> listToBodyguard(int bodyId ){
-        Date currenDate = new Date();
-        return servicesRepository.listToBodyguard(currenDate,bodyId);
+        return servicesRepository.listToBodyguard(bodyId);
     }
 
 
