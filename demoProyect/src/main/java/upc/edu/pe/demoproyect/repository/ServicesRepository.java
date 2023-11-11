@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import upc.edu.pe.demoproyect.entities.Services;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 
@@ -40,6 +41,12 @@ public interface ServicesRepository extends JpaRepository<Services, Integer> {
             "WHERE s.bodyguards.id = :bodyguardId")
 
     Long countDistinctClientsForBodyguard(@Param("bodyguardId") Integer bodyguardId);
+
+    //@Query("select s from Services s where s.st_pagado=true and s.st_anulado=false and s.bodyguards.id=:id")
+    //public List<Services> findByStPagadoTrueAndStAnuladoFalseAndDateAfterAndBodyguardIdIs(int id);
+
+    @Query("SELECT s FROM Services s WHERE s.st_pagado = true and s.st_anulado = false  and s.bodyguards.id=:bodyId and s.date > :currentDate")
+    List<Services> listToBodyguard(@Param("currentDate") Date currentDate, @Param("bodyId") int bodyId );
 
 
 

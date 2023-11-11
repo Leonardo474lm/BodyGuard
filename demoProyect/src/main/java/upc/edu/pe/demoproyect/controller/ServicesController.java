@@ -123,6 +123,18 @@ public class ServicesController {
         // Utiliza el método del repositorio para contar la cantidad de clientes atendidos
         return servicesService.countClientsServedByBodyguard(bodyguardId);
     }
+    @GetMapping("/peticion/{id}")
+    public ResponseEntity<List<ServicesDTO>> listToBodyguard(@PathVariable(value = "id") int id) {
+         List<Services> services;
+         List<ServicesDTO> servicesDTO = null;
+        try {
+            services = servicesService.listToBodyguard(id);
+            servicesDTO = convertToListDto(services);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se puede actualizar");
+        }
+        return new ResponseEntity<List<ServicesDTO>>(servicesDTO, HttpStatus.OK);
+    }
 
 
     //_____________________________________________________________________________||||||
