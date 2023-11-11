@@ -50,10 +50,10 @@ public class ServiceService implements ServiceInterface {
 
 
     public List<Services> getServicesByClientId(int clientId) {
-        return servicesRepository.findServicesByClientId(clientId);
+        return servicesRepository.findServic(clientId);
     }
-    public List<Services> findServicesByBodyguardID(int clientId) {
-        return servicesRepository.findServicesByBodyguarID(clientId);
+    public List<Services> findServicesByBodyguardID(int body) {
+        return servicesRepository.findServicesByBodyguarID(body);
     }
     public int getTotalHoursWorkedForBodyguard(int bodyguardId) {
         return servicesRepository.calculateTotalHoursWorked(bodyguardId);

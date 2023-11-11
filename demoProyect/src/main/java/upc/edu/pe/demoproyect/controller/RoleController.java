@@ -18,7 +18,8 @@ import upc.edu.pe.demoproyect.service.RoleService;
 import upc.edu.pe.demoproyect.service.UserService;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
-@Controller
+
+@RestController
 @SessionAttributes
 @RequestMapping("/roles")
 public class RoleController {

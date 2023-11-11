@@ -21,11 +21,11 @@ public interface ServicesRepository extends JpaRepository<Services, Integer> {
   //  @Query("SELECT SUM(s.time) FROM Service s")
  //   Integer sumarTiempos();
 
-    @Query("SELECT s FROM Services s WHERE s.clients.id = :clientId")
-    List<Services> findServicesByClientId(int clientId);
-    @Query("SELECT s FROM Services s WHERE s.bodyguards.id = :bodyguardid")
-    List<Services> findServicesByBodyguarID(int bodyguardid);
 
+    @Query("SELECT s FROM Services s WHERE s.clients.user.id = :userId")
+    List<Services> findServic(int userId);
+    @Query("SELECT s FROM Services s WHERE s.bodyguards.user.id = :bodyguardid")
+    List<Services> findServicesByBodyguarID(int bodyguardid);
 
     @Query("SELECT SUM(s.hours) FROM Services s WHERE s.bodyguards.id = :bodyguardId")
     Integer calculateTotalHoursWorked(@Param("bodyguardId") Integer bodyguardId);
