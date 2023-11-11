@@ -1,12 +1,14 @@
 package upc.edu.pe.demoproyect.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import upc.edu.pe.demoproyect.entities.Services;
 import upc.edu.pe.demoproyect.interfaceservice.ServiceInterface;
 import upc.edu.pe.demoproyect.repository.ServicesRepository;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -67,6 +69,10 @@ public class ServiceService implements ServiceInterface {
     //solo calcula la cantidad de clientes que ha atendido y no la cantidad de servicios atendidos
     public Long countClientsServedByBodyguard(Integer bodyguardId) {
         return servicesRepository.countDistinctClientsForBodyguard(bodyguardId);
+    }
+    public List<Services> listToBodyguard(int bodyId ){
+        Date currenDate = new Date();
+        return servicesRepository.listToBodyguard(currenDate,bodyId);
     }
 
 

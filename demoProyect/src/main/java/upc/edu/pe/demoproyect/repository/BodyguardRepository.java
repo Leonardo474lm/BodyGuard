@@ -5,6 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import upc.edu.pe.demoproyect.entities.Bodyguard;
+import upc.edu.pe.demoproyect.entities.Services;
+
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -14,4 +17,6 @@ public interface BodyguardRepository extends JpaRepository<Bodyguard,Integer> {
     List<Bodyguard> findByDistrict(String address);
     @Query("SELECT AVG(s.review) FROM Services s WHERE s.bodyguards.id = :bodyguardId")
     Integer getAverageReviewByBodyguardId(@Param("bodyguardId") int bodyguardId);
+
+
 }
