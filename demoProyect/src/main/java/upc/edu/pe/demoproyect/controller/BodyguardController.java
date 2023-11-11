@@ -96,7 +96,7 @@ public class BodyguardController {
     }
 
     @GetMapping("/getReviewBodyguard/{id}")
-    public float getAverageReviewByBodyguardId(@PathVariable int id) {
+    public Integer getAverageReviewByBodyguardId(@PathVariable int id) {
         return bodyguardService.getAverageReviewByBodyguardId(id);
     }
 }

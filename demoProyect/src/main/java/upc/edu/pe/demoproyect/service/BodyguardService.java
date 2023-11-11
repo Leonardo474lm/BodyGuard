@@ -21,7 +21,12 @@ public class BodyguardService implements BodyguarInterface {
 
     @Override
     public List<Bodyguard> List() {
-        return bodyguardRepository.findAll();
+        List<Bodyguard> list1 = bodyguardRepository.findAll();
+        for (Bodyguard body: list1 )
+        {
+            body.setStar(getAverageReviewByBodyguardId(body.getId()));
+        }
+        return list1;
     }
 
     @Override
@@ -45,7 +50,7 @@ public class BodyguardService implements BodyguarInterface {
         return bodyguardRepository.findByDistrict(address);
     }
 
-    public float getAverageReviewByBodyguardId(int id) {
+    public Integer getAverageReviewByBodyguardId(int id) {
         return bodyguardRepository.getAverageReviewByBodyguardId(id);
     }
 

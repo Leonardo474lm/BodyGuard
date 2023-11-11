@@ -47,6 +47,8 @@ public class ServiceService implements ServiceInterface {
         return servicesRepository.findById(id).get();
     }
 
+
+
     public List<Services> getServicesByClientId(int clientId) {
         return servicesRepository.findServicesByClientId(clientId);
     }

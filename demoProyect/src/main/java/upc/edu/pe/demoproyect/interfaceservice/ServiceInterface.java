@@ -18,5 +18,7 @@ public interface ServiceInterface {
     public Services findByStartdate (LocalDate fecha);
     public Services listById(int id) throws Exception;
 
+    //public Integer avgReviewByBodyguard(int id);
+
   //  Integer obtenerSumaDePuntajes();
 }
