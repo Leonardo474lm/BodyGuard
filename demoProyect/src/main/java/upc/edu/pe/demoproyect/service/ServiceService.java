@@ -52,28 +52,44 @@ public class ServiceService implements ServiceInterface {
 
 
 
+
     public List<Services> getServicesByClientId(int clientId) {
         return servicesRepository.findServic(clientId);
     }
     public List<Services> findServicesByBodyguardID(int body) {
         return servicesRepository.findServicesByBodyguarID(body);
     }
-    public int getTotalHoursWorkedForBodyguard(int bodyguardId) {
-        return servicesRepository.calculateTotalHoursWorked(bodyguardId);
+    public Integer getTotalHoursWorkedForBodyguard(int bodyguardId) {
+        Integer total =  servicesRepository.calculateTotalHoursWorked(bodyguardId, java.time.LocalDate.now());
+        return total !=null? total : 0;
     }
 
 
     public float getTotalEarningsForBodyguard(int bodyguardId) {
-        return servicesRepository.calculateTotalEarningsForBodyguard(bodyguardId);
+       return  servicesRepository.calculateTotalEarningsForBodyguard(bodyguardId,java.time.LocalDate.now());
     }
 
     //solo calcula la cantidad de clientes que ha atendido y no la cantidad de servicios atendidos
     public Long countClientsServedByBodyguard(Integer bodyguardId) {
-        return servicesRepository.countDistinctClientsForBodyguard(bodyguardId);
+        Long count= servicesRepository.countDistinctClientsForBodyguard(bodyguardId,java.time.LocalDate.now());
+        return count !=null? count : 0;
     }
     public List<Services> listToBodyguard(int bodyId ){
         return servicesRepository.listToBodyguard(bodyId);
     }
+
+    @Override
+    public Float getTotalGastosByClient(int id) {
+        Float gasto = servicesRepository.getTotalGastosByClient(id,java.time.LocalDate.now());
+        return  gasto !=null ? gasto : (float)0;
+    }
+
+    @Override
+    public Integer getTotalServByClient(int clientId) {
+        Integer aux = servicesRepository.getTotalServByClient(clientId,java.time.LocalDate.now());
+        return  aux !=null ? aux : 0;
+    }
+
 
 
 

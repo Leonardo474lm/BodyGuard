@@ -65,7 +65,7 @@ public class ServicesController {
             services = servicesService.listById(id);
         }
         catch(Exception e){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el servicio");
         }
         return services ;
     }
@@ -134,6 +134,14 @@ public class ServicesController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se pudo obtener la lista");
         }
         return new ResponseEntity<List<Services>>(services, HttpStatus.OK);
+    }
+    @GetMapping("/gastototal/{id}")
+    public  float getTotalGastosByClient(@PathVariable(value = "id") int id){
+        return servicesService.getTotalGastosByClient(id);
+    }
+    @GetMapping("/totalserv/{id}")
+    public  Integer getTotalServByClient(@PathVariable(value = "id") int id){
+        return servicesService.getTotalServByClient(id);
     }
 
 

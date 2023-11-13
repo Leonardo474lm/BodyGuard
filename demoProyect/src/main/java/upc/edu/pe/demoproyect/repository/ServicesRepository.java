@@ -28,27 +28,52 @@ public interface ServicesRepository extends JpaRepository<Services, Integer> {
     @Query("SELECT s FROM Services s WHERE s.bodyguards.user.id = :bodyguardid")
     List<Services> findServicesByBodyguarID(int bodyguardid);
 
-    @Query("SELECT SUM(s.hours) FROM Services s WHERE s.bodyguards.id = :bodyguardId")
-    Integer calculateTotalHoursWorked(@Param("bodyguardId") Integer bodyguardId);
+    @Query("SELECT SUM(s.hours) FROM Services s WHERE s.bodyguards.id = :bodyguardId and s.st_pagado = true and s.st_anulado = false and s.st_aceptar=true and s.date < :currentDate")
+    Integer calculateTotalHoursWorked(@Param("bodyguardId") Integer bodyguardId, @Param("currentDate") LocalDate currentDate);
 
     @Query("SELECT SUM(s.hours * b.price_per_hour) " +
             "FROM Services s " +
             "JOIN s.bodyguards b " +
-            "WHERE b.id = :bodyguardId")
-    float calculateTotalEarningsForBodyguard(@Param("bodyguardId") Integer bodyguardId);
-    @Query("SELECT COUNT(DISTINCT s.clients) " +
+            "WHERE b.id = :bodyguardId and s.st_pagado = true and s.st_anulado = false and s.st_aceptar=true and s.date < :currentDate")
+    float calculateTotalEarningsForBodyguard(@Param("bodyguardId") Integer bodyguardId, @Param("currentDate") LocalDate currentDate);
+    @Query("SELECT COUNT( distinct s.clients.id) " +
             "FROM Services s " +
-            "WHERE s.bodyguards.id = :bodyguardId")
+            "WHERE s.bodyguards.id = :bodyguardId and s.st_pagado = true and s.st_anulado = false and s.st_aceptar=true and s.date < :currentDate")
 
-    Long countDistinctClientsForBodyguard(@Param("bodyguardId") Integer bodyguardId);
+    Long countDistinctClientsForBodyguard(@Param("bodyguardId") Integer bodyguardId,@Param("currentDate") LocalDate currentDate);
 
     //@Query("select s from Services s where s.st_pagado=true and s.st_anulado=false and s.bodyguards.id=:id")
     //public List<Services> findByStPagadoTrueAndStAnuladoFalseAndDateAfterAndBodyguardIdIs(int id);
 
-    //@Query("SELECT s FROM Services s WHERE s.st_pagado = true and s.st_anulado = false  and s.bodyguards.id=:bodyId and s.date > :currentDate")
-    //@Query("SELECT s FROM Services s WHERE s.st_pagado = true and s.st_anulado = false  and s.bodyguards.id=:bodyId")
     @Query("SELECT s FROM Services s WHERE s.st_pagado = true and s.st_anulado = false and s.st_aceptar=false and s.bodyguards.id=:bodyId")
     List<Services> listToBodyguard( @Param("bodyId") int bodyId );
+
+
+    @Query("SELECT SUM(s.hours*s.bodyguards.price_per_hour) FROM Services s WHERE s.clients.id = :clientId and s.date < :currentDate and s.st_aceptar=true and s.st_anulado=false and s.st_pagado=true")
+    public Float getTotalGastosByClient(@Param("clientId") int clientId,@Param("currentDate") LocalDate currentDat);
+
+
+    @Query("SELECT COUNT(s.id) FROM Services s WHERE s.clients.id = :clientId and s.date < :currentDate and s.st_aceptar=true and s.st_anulado=false and s.st_pagado=true")
+    public Integer getTotalServByClient(@Param("clientId") int clientId,@Param("currentDate") LocalDate currentDat);
+
+    //Integer countByClientsIdAndDateBeforeAndStAceptarIsTrueAndStAnuladoIsFalseAndStPagadoIsTrue(@Param("clientId") int clientId,@Param("currentDate") LocalDate currentDat);
+   // Integer countByClientsIdAndDateBeforeAndSt_aceptarIsTrueAndSt_anuladoIsFalseAndSt_pagadoIsTrue( int clientId, LocalDate currentDate);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

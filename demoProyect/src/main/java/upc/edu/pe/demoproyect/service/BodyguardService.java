@@ -7,6 +7,7 @@ import upc.edu.pe.demoproyect.entities.Client;
 import upc.edu.pe.demoproyect.interfaceservice.BodyguarInterface;
 import upc.edu.pe.demoproyect.repository.BodyguardRepository;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -55,7 +56,8 @@ public class BodyguardService implements BodyguarInterface {
     }
 
         public Integer getAverageReviewByBodyguardId(int id) {
-            Integer averageReview = bodyguardRepository.getAverageReviewByBodyguardId(id);
+            Date currentDate = new Date();
+            Integer averageReview = bodyguardRepository.getAverageReviewByBodyguardId(id,java.time.LocalDate.now());
             return averageReview != null ? averageReview : 0;
 
         }

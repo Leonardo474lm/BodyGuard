@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import upc.edu.pe.demoproyect.entities.Bodyguard;
 import upc.edu.pe.demoproyect.entities.Services;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -15,8 +16,8 @@ public interface BodyguardRepository extends JpaRepository<Bodyguard,Integer> {
     @Query("SELECT b FROM Bodyguard b WHERE b.specialization.id = :specializationId")
     List<Bodyguard> findBySpecializationId(@Param("specializationId") int specializationId);
     List<Bodyguard> findByDistrict(String address);
-    @Query("SELECT AVG(s.review) FROM Services s WHERE s.bodyguards.id = :bodyguardId")
-    Integer getAverageReviewByBodyguardId(@Param("bodyguardId") int bodyguardId);
+    @Query("SELECT AVG(s.review) FROM Services s WHERE s.bodyguards.id = :bodyguardId and s.date < :currentDate")
+    Integer getAverageReviewByBodyguardId(@Param("bodyguardId") int bodyguardId,@Param("currentDate") LocalDate currentDate);
 
     Bodyguard findByUserEmail(String mail);
 

@@ -20,5 +20,9 @@ public interface ServiceInterface {
 
     public List<Services> listToBodyguard(int id);
 
+    public Float getTotalGastosByClient(int id);
+
+    public Integer getTotalServByClient(int clientId);
+
   //  Integer obtenerSumaDePuntajes();
 }
