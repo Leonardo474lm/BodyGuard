@@ -106,13 +106,13 @@ public class ServicesController {
     }
 
 
-    @GetMapping("HourTotal/{bodyID}")
+    @GetMapping("/HourTotal/{bodyID}")
     public ResponseEntity<Integer> getTotalHoursWorkedForBodyguard(@PathVariable int bodyID) {
         int totalhora = servicesService.getTotalHoursWorkedForBodyguard(bodyID);
         return new ResponseEntity<>(totalhora, HttpStatus.OK);
     }
 
-    @GetMapping("Pagototal/{bodyguardId}")
+    @GetMapping("/pagototal/{bodyguardId}")
     public float getTotalEarningsForBodyguard(@PathVariable Integer bodyguardId) {
         // Utiliza el método del repositorio para calcular el monto total ganado
         return servicesService.getTotalEarningsForBodyguard(bodyguardId);
