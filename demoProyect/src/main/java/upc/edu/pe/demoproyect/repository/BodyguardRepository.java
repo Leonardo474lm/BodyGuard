@@ -22,4 +22,6 @@ public interface BodyguardRepository extends JpaRepository<Bodyguard,Integer> {
     Bodyguard findByUserEmail(String mail);
 
 
+
+
 }

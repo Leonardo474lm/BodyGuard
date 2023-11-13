@@ -23,6 +23,7 @@ public interface ServiceInterface {
     public Float getTotalGastosByClient(int id);
 
     public Integer getTotalServByClient(int clientId);
+    public List<Services> clienthistory(int clientId);
 
   //  Integer obtenerSumaDePuntajes();
 }

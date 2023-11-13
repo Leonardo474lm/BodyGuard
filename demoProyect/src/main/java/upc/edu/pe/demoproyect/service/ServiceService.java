@@ -1,6 +1,7 @@
 package upc.edu.pe.demoproyect.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import upc.edu.pe.demoproyect.entities.Services;
@@ -88,6 +89,23 @@ public class ServiceService implements ServiceInterface {
     public Integer getTotalServByClient(int clientId) {
         Integer aux = servicesRepository.getTotalServByClient(clientId,java.time.LocalDate.now());
         return  aux !=null ? aux : 0;
+    }
+
+    @Override
+    public List<Services> clienthistory(int clientId) {
+        List<Services> list1 = servicesRepository.clienthistory(clientId);
+        for (Services serv: list1 )
+        {
+            serv.getBodyguards().setStar(getAverageReviewByBodyguardId(serv.getBodyguards().getId()));
+        }
+        return list1;
+    }
+
+    public Integer getAverageReviewByBodyguardId(int id) {
+        LocalDate currentDate = java.time.LocalDate.now();
+        Integer averageReview = servicesRepository.getAverageReviewByBodyguardId(id,currentDate);
+        return averageReview != null ? averageReview : 0;
+
     }
 
 

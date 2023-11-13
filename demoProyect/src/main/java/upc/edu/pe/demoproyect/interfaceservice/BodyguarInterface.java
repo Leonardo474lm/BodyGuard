@@ -3,6 +3,7 @@ package upc.edu.pe.demoproyect.interfaceservice;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.StreamingHttpOutputMessage;
 import upc.edu.pe.demoproyect.entities.Bodyguard;
+import upc.edu.pe.demoproyect.entities.Services;
 import upc.edu.pe.demoproyect.entities.Specialization;
 
 
@@ -19,5 +20,6 @@ public interface BodyguarInterface {
     Integer getAverageReviewByBodyguardId(int bodyguardId);
 
     public Bodyguard getByUserEmail(String mail);
+
 
 }

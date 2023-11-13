@@ -126,10 +126,10 @@ public class ServicesController {
     @GetMapping("/peticion/{id}")
     public ResponseEntity<List<Services>> listToBodyguard(@PathVariable(value = "id") int id) {
          List<Services> services;
-         List<ServicesDTO> servicesDTO = null;
+
         try {
             services = servicesService.listToBodyguard(id);
-            servicesDTO = convertToListDto(services);
+
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se pudo obtener la lista");
         }
@@ -142,6 +142,17 @@ public class ServicesController {
     @GetMapping("/totalserv/{id}")
     public  Integer getTotalServByClient(@PathVariable(value = "id") int id){
         return servicesService.getTotalServByClient(id);
+    }
+    @GetMapping("/clienthistory/{id}")
+    public  ResponseEntity<List<Services>> clientHistory(@PathVariable(value = "id") int id){
+        List<Services> services;
+        try {
+            services = servicesService.clienthistory(id);
+
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se pudo obtener la lista");
+        }
+        return new ResponseEntity<>(services, HttpStatus.OK);
     }
 
 

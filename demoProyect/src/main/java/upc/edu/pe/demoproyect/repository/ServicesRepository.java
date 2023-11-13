@@ -56,6 +56,12 @@ public interface ServicesRepository extends JpaRepository<Services, Integer> {
     @Query("SELECT COUNT(s.id) FROM Services s WHERE s.clients.id = :clientId and s.date < :currentDate and s.st_aceptar=true and s.st_anulado=false and s.st_pagado=true")
     public Integer getTotalServByClient(@Param("clientId") int clientId,@Param("currentDate") LocalDate currentDat);
 
+    @Query("SELECT AVG(s.review) FROM Services s WHERE s.bodyguards.id = :bodyguardId and s.date < :currentDate")
+    Integer getAverageReviewByBodyguardId(@Param("bodyguardId") int bodyguardId,@Param("currentDate") LocalDate currentDate);
+
+    @Query("SELECT s FROM Services s WHERE s.clients.id=:clientId")
+    public  List<Services> clienthistory(@Param("clientId")  int clientId);
+
     //Integer countByClientsIdAndDateBeforeAndStAceptarIsTrueAndStAnuladoIsFalseAndStPagadoIsTrue(@Param("clientId") int clientId,@Param("currentDate") LocalDate currentDat);
    // Integer countByClientsIdAndDateBeforeAndSt_aceptarIsTrueAndSt_anuladoIsFalseAndSt_pagadoIsTrue( int clientId, LocalDate currentDate);
 
