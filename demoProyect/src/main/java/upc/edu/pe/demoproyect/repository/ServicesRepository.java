@@ -45,7 +45,7 @@ public interface ServicesRepository extends JpaRepository<Services, Integer> {
     //@Query("select s from Services s where s.st_pagado=true and s.st_anulado=false and s.bodyguards.id=:id")
     //public List<Services> findByStPagadoTrueAndStAnuladoFalseAndDateAfterAndBodyguardIdIs(int id);
 
-    @Query("SELECT s FROM Services s WHERE s.st_pagado = true and s.st_anulado = false and s.st_aceptar=false and s.bodyguards.id=:bodyId")
+    @Query("SELECT s FROM Services s WHERE s.st_pagado = false and s.st_anulado = false and s.st_aceptar=false and s.bodyguards.id=:bodyId")
     List<Services> listToBodyguard( @Param("bodyId") int bodyId );
 
 
