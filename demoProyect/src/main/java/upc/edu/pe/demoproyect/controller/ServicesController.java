@@ -155,6 +155,18 @@ public class ServicesController {
         return new ResponseEntity<>(services, HttpStatus.OK);
     }
 
+    @GetMapping("/clientservices/{id}")
+    public  ResponseEntity<List<Services>> clientServices(@PathVariable(value = "id") int id){
+        List<Services> services;
+        try {
+            services = servicesService.clientServices(id);
+
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se pudo obtener la lista");
+        }
+        return new ResponseEntity<>(services, HttpStatus.OK);
+    }
+
 
     //_____________________________________________________________________________||||||
     private Services convertToEntity(ServicesDTO servicesDTO) {

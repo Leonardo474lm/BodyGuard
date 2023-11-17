@@ -93,11 +93,17 @@ public class ServiceService implements ServiceInterface {
 
     @Override
     public List<Services> clienthistory(int clientId) {
-        List<Services> list1 = servicesRepository.clienthistory(clientId);
+        List<Services> list1 = servicesRepository.clienthistory(clientId,java.time.LocalDate.now());
         for (Services serv: list1 )
         {
             serv.getBodyguards().setStar(getAverageReviewByBodyguardId(serv.getBodyguards().getId()));
         }
+        return list1;
+    }
+
+    @Override
+    public List<Services> clientServices(int clientId) {
+        List<Services> list1 = servicesRepository.clientServices(clientId,java.time.LocalDate.now());
         return list1;
     }
 

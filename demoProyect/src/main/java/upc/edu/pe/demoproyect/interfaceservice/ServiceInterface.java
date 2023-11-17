@@ -25,5 +25,7 @@ public interface ServiceInterface {
     public Integer getTotalServByClient(int clientId);
     public List<Services> clienthistory(int clientId);
 
+    public List<Services> clientServices(int clientId);
+
   //  Integer obtenerSumaDePuntajes();
 }
