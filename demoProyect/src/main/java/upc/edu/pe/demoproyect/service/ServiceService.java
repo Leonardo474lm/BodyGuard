@@ -107,6 +107,11 @@ public class ServiceService implements ServiceInterface {
         return list1;
     }
 
+    @Override
+    public List<Services> servicesAnuladoIsFalse() {
+        return servicesRepository.findAllBySt_anuladoIsFalse();
+    }
+
     public Integer getAverageReviewByBodyguardId(int id) {
         LocalDate currentDate = java.time.LocalDate.now();
         Integer averageReview = servicesRepository.getAverageReviewByBodyguardId(id,currentDate);

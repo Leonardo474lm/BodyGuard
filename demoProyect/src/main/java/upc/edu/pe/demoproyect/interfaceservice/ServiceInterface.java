@@ -27,5 +27,8 @@ public interface ServiceInterface {
 
     public List<Services> clientServices(int clientId);
 
+    public List<Services> servicesAnuladoIsFalse();
+
+
   //  Integer obtenerSumaDePuntajes();
 }

@@ -1,12 +1,15 @@
 package upc.edu.pe.demoproyect.service;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import upc.edu.pe.demoproyect.entities.Bodyguard;
 import upc.edu.pe.demoproyect.entities.Client;
 import upc.edu.pe.demoproyect.entities.Services;
+import upc.edu.pe.demoproyect.entities.Specialization;
 import upc.edu.pe.demoproyect.interfaceservice.BodyguarInterface;
 import upc.edu.pe.demoproyect.repository.BodyguardRepository;
+import upc.edu.pe.demoproyect.repository.SpecializationRepository;
 
 import java.util.Date;
 import java.util.List;
@@ -15,10 +18,15 @@ import java.util.List;
 public class BodyguardService implements BodyguarInterface {
     @Autowired
     private BodyguardRepository bodyguardRepository;
+    @Autowired
+    private SpecializationRepository specializationRepository;
 
     @Override
-    public Bodyguard Insert(Bodyguard bodyguard) {
-        return bodyguardRepository.save(bodyguard);
+    public Bodyguard Insert(Bodyguard bodyguard) throws Exception{
+        Specialization specialization = specializationRepository.findById(bodyguard.getSpecialization().getId()).
+                orElseThrow(() -> new Exception("No se encontró entidad"));;
+        bodyguard.setSpecialization(specialization);
+        return bodyguardRepository.saveAndFlush(bodyguard);
     }
 
     @Override

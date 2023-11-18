@@ -19,7 +19,7 @@ public class Bodyguard {
     @Column(name = "st_activo", nullable = false)
     private Boolean st_activo;
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "User_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
     private User user;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "specializations", referencedColumnName = "id", nullable = false)
@@ -29,6 +29,7 @@ public class Bodyguard {
     @Column(name = "star")
     //promedio de calificacion (5)
     private transient int star;
+    //@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 
 
 
