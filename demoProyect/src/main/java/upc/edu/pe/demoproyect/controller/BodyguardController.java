@@ -46,13 +46,13 @@ public class BodyguardController {
     }
 
     @PostMapping("/insert")
-    public ResponseEntity<Bodyguard> register(@RequestBody Bodyguard bodyguarddto) {
+    public ResponseEntity<Bodyguard> register(@RequestBody BodyguardDTO bodyguarddto) {
         Bodyguard bodyguard;
         BodyguardDTO dto = null;
         try {
-            //bodyguard = convertToEntity(bodyguarddto);
-            bodyguard = bodyguardService.Insert(bodyguarddto);
-            dto = convertToDto(bodyguard);
+            bodyguard = convertToEntity(bodyguarddto);
+            bodyguard = bodyguardService.Insert(bodyguard);
+            //dto = convertToDto(bodyguard);
 
         } catch (Exception e) {
             //throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se ha podido insertar");
@@ -60,7 +60,7 @@ public class BodyguardController {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "No se ha podido insertar" + e.getMessage());
             //return new ResponseEntity<>("Error al insertar el Bodyguard: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>(bodyguarddto, HttpStatus.OK);
+        return new ResponseEntity<>(bodyguard, HttpStatus.OK);
 
     }
 

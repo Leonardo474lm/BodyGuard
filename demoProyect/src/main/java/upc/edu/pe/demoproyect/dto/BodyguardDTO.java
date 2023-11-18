@@ -12,7 +12,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 public class BodyguardDTO {
-    private int id;
+
     private float price_per_hour;
     private Boolean st_activo;
     private User user;
