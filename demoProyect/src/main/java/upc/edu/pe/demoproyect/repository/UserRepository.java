@@ -7,5 +7,6 @@ import upc.edu.pe.demoproyect.entities.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Integer> {
+    public User findByEmail(String email);
 
 }

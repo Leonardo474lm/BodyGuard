@@ -10,9 +10,13 @@ import upc.edu.pe.demoproyect.dto.BodyguardDTO;
 
 import upc.edu.pe.demoproyect.entities.Bodyguard;
 
+import upc.edu.pe.demoproyect.entities.Specialization;
+import upc.edu.pe.demoproyect.interfaceservice.BodyguarInterface;
 import upc.edu.pe.demoproyect.service.BodyguardService;
+import upc.edu.pe.demoproyect.service.SpecializationService;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -22,6 +26,8 @@ import java.util.stream.Collectors;
 public class BodyguardController {
     @Autowired
     private BodyguardService bodyguardService;
+    @Autowired
+    private SpecializationService specializationService;
 
     private BodyguardDTO convertToDto(Bodyguard bodyguard) {
         ModelMapper modelMapper = new ModelMapper();
@@ -40,14 +46,22 @@ public class BodyguardController {
     }
 
     @PostMapping("/insert")
-    public ResponseEntity<BodyguardDTO> register(@RequestBody BodyguardDTO bodyguarddto) {
+    public ResponseEntity<Bodyguard> register(@RequestBody BodyguardDTO bodyguarddto) {
         Bodyguard bodyguard;
         BodyguardDTO dto = null;
-        bodyguard = convertToEntity(bodyguarddto);
-        bodyguard = bodyguardService.Insert(bodyguard);
-        dto = convertToDto(bodyguard);
+        try {
+            bodyguard = convertToEntity(bodyguarddto);
+            bodyguard = bodyguardService.Insert(bodyguard);
+            //dto = convertToDto(bodyguard);
 
-        return new ResponseEntity<BodyguardDTO>(dto, HttpStatus.OK);
+        } catch (Exception e) {
+            //throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se ha podido insertar");
+            e.printStackTrace();
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "No se ha podido insertar" + e.getMessage());
+            //return new ResponseEntity<>("Error al insertar el Bodyguard: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        return new ResponseEntity<>(bodyguard, HttpStatus.OK);
+
     }
 
     @PutMapping("/update")
@@ -65,7 +79,17 @@ public class BodyguardController {
         return new ResponseEntity<BodyguardDTO>(bodyguardDTO1TO, HttpStatus.OK);
 
     }
-
+    @GetMapping("/{id}")
+    Bodyguard listById(@PathVariable(value = "id") int id){
+        Bodyguard bodyguard;
+        try{
+            bodyguard = bodyguardService.listById(id);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
+        }
+        return bodyguard ;
+    }
     @GetMapping("/List")
     public ResponseEntity<List<Bodyguard>> List() {
         List<Bodyguard> bodyguards = null;
@@ -85,7 +109,19 @@ public class BodyguardController {
     }
 
     @GetMapping("/getReviewBodyguard/{id}")
-    public float getAverageReviewByBodyguardId(@PathVariable int id) {
+    public Integer getAverageReviewByBodyguardId(@PathVariable int id) {
         return bodyguardService.getAverageReviewByBodyguardId(id);
+    }
+    @GetMapping("/usermail/{mail}")
+    public ResponseEntity<Bodyguard> getByUserEmail(@PathVariable(value = "mail")String mail ){
+        Bodyguard bodyguard;
+        try{
+            bodyguard = bodyguardService.getByUserEmail(mail);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el usuario");
+        }
+        return new ResponseEntity<Bodyguard>(bodyguard,HttpStatus.OK);
+
     }
 }

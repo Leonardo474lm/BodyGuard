@@ -11,6 +11,7 @@ import upc.edu.pe.demoproyect.dto.ClientDTO;
 import upc.edu.pe.demoproyect.dto.ServicesDTO;
 import upc.edu.pe.demoproyect.entities.Client;
 import upc.edu.pe.demoproyect.entities.Services;
+import upc.edu.pe.demoproyect.entities.Specialization;
 import upc.edu.pe.demoproyect.service.ServiceService;
 
 import java.time.LocalDate;
@@ -57,7 +58,17 @@ public class ServicesController {
         }
         return new ResponseEntity<ServicesDTO>(servicesDTO, HttpStatus.OK);
     }
-
+    @GetMapping("/{id}")
+    Services listById(@PathVariable(value = "id") int id){
+        Services services;
+        try{
+            services = servicesService.listById(id);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el servicio");
+        }
+        return services ;
+    }
     @DeleteMapping("/Delete/{id}")
     Services delete(@PathVariable(value = "id") int id) {
         Services services;
@@ -95,13 +106,13 @@ public class ServicesController {
     }
 
 
-    @GetMapping("HourTotal/{bodyID}")
+    @GetMapping("/HourTotal/{bodyID}")
     public ResponseEntity<Integer> getTotalHoursWorkedForBodyguard(@PathVariable int bodyID) {
         int totalhora = servicesService.getTotalHoursWorkedForBodyguard(bodyID);
         return new ResponseEntity<>(totalhora, HttpStatus.OK);
     }
 
-    @GetMapping("Pagototal/{bodyguardId}")
+    @GetMapping("/pagototal/{bodyguardId}")
     public float getTotalEarningsForBodyguard(@PathVariable Integer bodyguardId) {
         // Utiliza el método del repositorio para calcular el monto total ganado
         return servicesService.getTotalEarningsForBodyguard(bodyguardId);
@@ -112,6 +123,63 @@ public class ServicesController {
         // Utiliza el método del repositorio para contar la cantidad de clientes atendidos
         return servicesService.countClientsServedByBodyguard(bodyguardId);
     }
+    @GetMapping("/peticion/{id}")
+    public ResponseEntity<List<Services>> listToBodyguard(@PathVariable(value = "id") int id) {
+         List<Services> services;
+
+        try {
+            services = servicesService.listToBodyguard(id);
+
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se pudo obtener la lista");
+        }
+        return new ResponseEntity<List<Services>>(services, HttpStatus.OK);
+    }
+    @GetMapping("/gastototal/{id}")
+    public  float getTotalGastosByClient(@PathVariable(value = "id") int id){
+        return servicesService.getTotalGastosByClient(id);
+    }
+    @GetMapping("/totalserv/{id}")
+    public  Integer getTotalServByClient(@PathVariable(value = "id") int id){
+        return servicesService.getTotalServByClient(id);
+    }
+    @GetMapping("/clienthistory/{id}")
+    public  ResponseEntity<List<Services>> clientHistory(@PathVariable(value = "id") int id){
+        List<Services> services;
+        try {
+            services = servicesService.clienthistory(id);
+
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se pudo obtener la lista");
+        }
+        return new ResponseEntity<>(services, HttpStatus.OK);
+    }
+
+    @GetMapping("/clientservices/{id}")
+    public  ResponseEntity<List<Services>> clientServices(@PathVariable(value = "id") int id){
+        List<Services> services;
+        try {
+            services = servicesService.clientServices(id);
+
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se pudo obtener la lista");
+        }
+        return new ResponseEntity<>(services, HttpStatus.OK);
+    }
+
+    @GetMapping("/servicestoacept")
+    public  ResponseEntity<List<Services>> clientServices(){
+        List<Services> services;
+        try {
+            services = servicesService.servicesAnuladoIsFalse();
+
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se pudo obtener la lista");
+        }
+        return new ResponseEntity<>(services, HttpStatus.OK);
+    }
+
+
 
 
     //_____________________________________________________________________________||||||

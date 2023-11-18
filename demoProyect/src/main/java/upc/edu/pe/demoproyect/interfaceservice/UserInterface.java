@@ -15,4 +15,5 @@ public interface UserInterface {
     public User Update(User user) throws Exception;
 
     public User Find_id(int id);
+    public User getByEmail(String email);
 }

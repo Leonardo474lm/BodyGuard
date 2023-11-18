@@ -11,6 +11,7 @@ import upc.edu.pe.demoproyect.dto.PaymentDTO;
 
 import upc.edu.pe.demoproyect.entities.Payment;
 
+import upc.edu.pe.demoproyect.entities.Specialization;
 import upc.edu.pe.demoproyect.service.PaymentService;
 
 import java.util.List;
@@ -80,7 +81,17 @@ public class PaymentController {
         return new ResponseEntity<List<Payment>>(payments, HttpStatus.OK);
     }
 
-
+    @GetMapping("/{id}")
+    Payment listById(@PathVariable(value = "id") int id){
+        Payment payment;
+        try{
+            payment = paymentService.listById(id);
+        }
+        catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND,"No se encontro el metodo de pago");
+        }
+        return payment ;
+    }
     @DeleteMapping("/Delete/{id}")
     Payment Delete(@PathVariable(value = "id") int id){
         Payment payment;

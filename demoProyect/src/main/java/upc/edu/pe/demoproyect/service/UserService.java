@@ -43,5 +43,9 @@ public class UserService implements UserInterface {
                 orElseThrow(() -> new Exception("No se encontró entidad"));
         return userRepository.save(user);
     }
+    @Override
+    public User getByEmail(String email){
+        return userRepository.findByEmail(email);
+    }
 
 }
