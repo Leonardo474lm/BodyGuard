@@ -11,6 +11,7 @@ import upc.edu.pe.demoproyect.dto.BodyguardDTO;
 import upc.edu.pe.demoproyect.entities.Bodyguard;
 
 import upc.edu.pe.demoproyect.entities.Specialization;
+import upc.edu.pe.demoproyect.interfaceservice.BodyguarInterface;
 import upc.edu.pe.demoproyect.service.BodyguardService;
 
 import java.util.List;
@@ -23,6 +24,8 @@ import java.util.stream.Collectors;
 public class BodyguardController {
     @Autowired
     private BodyguardService bodyguardService;
+    @Autowired
+    private BodyguarInterface bi;
 
     private BodyguardDTO convertToDto(Bodyguard bodyguard) {
         ModelMapper modelMapper = new ModelMapper();
@@ -41,14 +44,20 @@ public class BodyguardController {
     }
 
     @PostMapping("/insert")
-    public ResponseEntity<BodyguardDTO> register(@RequestBody BodyguardDTO bodyguarddto) {
+    public ResponseEntity<Bodyguard> register(@RequestBody Bodyguard bodyguarddto) {
         Bodyguard bodyguard;
         BodyguardDTO dto = null;
-        bodyguard = convertToEntity(bodyguarddto);
-        bodyguard = bodyguardService.Insert(bodyguard);
-        dto = convertToDto(bodyguard);
+        try {
+            //bodyguard = convertToEntity(bodyguarddto);
+            bodyguard = bodyguardService.Insert(bodyguarddto);
+            dto = convertToDto(bodyguard);
 
-        return new ResponseEntity<BodyguardDTO>(dto, HttpStatus.OK);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se ha podido insertar");
+
+        }
+        return new ResponseEntity<>(bodyguarddto, HttpStatus.OK);
+
     }
 
     @PutMapping("/update")

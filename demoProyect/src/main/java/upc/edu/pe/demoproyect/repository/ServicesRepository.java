@@ -61,8 +61,11 @@ public interface ServicesRepository extends JpaRepository<Services, Integer> {
 
     @Query("SELECT s FROM Services s WHERE s.clients.id=:clientId and s.date < :currentDate")
     public  List<Services> clienthistory(@Param("clientId")  int clientId, @Param("currentDate") LocalDate currentDate);
-    @Query("SELECT s FROM Services s WHERE s.clients.id=:clientId and s.date >= :currentDate")
+    @Query("SELECT s FROM Services s WHERE s.clients.id=:clientId and s.date >= :currentDate and s.st_anulado=false ")
     public  List<Services> clientServices(@Param("clientId")  int clientId, @Param("currentDate") LocalDate currentDate);
+
+    @Query("SELECT s FROM Services s Where s.st_anulado=false")
+    public  List<Services> findAllBySt_anuladoIsFalse();
 
     //Integer countByClientsIdAndDateBeforeAndStAceptarIsTrueAndStAnuladoIsFalseAndStPagadoIsTrue(@Param("clientId") int clientId,@Param("currentDate") LocalDate currentDat);
    // Integer countByClientsIdAndDateBeforeAndSt_aceptarIsTrueAndSt_anuladoIsFalseAndSt_pagadoIsTrue( int clientId, LocalDate currentDate);
