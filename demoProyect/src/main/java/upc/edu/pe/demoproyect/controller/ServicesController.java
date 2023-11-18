@@ -178,8 +178,30 @@ public class ServicesController {
         }
         return new ResponseEntity<>(services, HttpStatus.OK);
     }
+    @GetMapping("/gettotalmoney")
+    public  ResponseEntity<Float> gettotalmoney(){
+        float ad;
+        try {
+           ad=servicesService.getpricetotal();
+
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se pudo obtener la lista");
+        }
+        return new ResponseEntity<>(ad, HttpStatus.OK);
+    }
 
 
+    @GetMapping("/getclienttotal")
+    public  ResponseEntity<Float> getclienttotal(){
+        float ad;
+        try {
+            ad=servicesService.getcountclient();
+
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No se pudo obtener la lista");
+        }
+        return new ResponseEntity<>(ad, HttpStatus.OK);
+    }
 
 
     //_____________________________________________________________________________||||||

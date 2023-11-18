@@ -120,7 +120,13 @@ public class ServiceService implements ServiceInterface {
     }
 
 
+public Float getpricetotal( ){
+        return servicesRepository.getTotalIncome(java.time.LocalDate.now());
+}
 
+    public Integer getcountclient( ){
+        return servicesRepository.getclienttotal(java.time.LocalDate.now());
+    }
 
 
 
