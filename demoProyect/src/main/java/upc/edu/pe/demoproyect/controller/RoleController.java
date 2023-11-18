@@ -17,7 +17,7 @@ import upc.edu.pe.demoproyect.interfaceservice.RoleInterface;
 import upc.edu.pe.demoproyect.service.RoleService;
 import upc.edu.pe.demoproyect.service.UserService;
 
-@CrossOrigin(origins = {"http://localhost:4200"})
+@CrossOrigin(origins = {"http://localhost:4200","http://18.234.158.162"})
 
 @RestController
 @SessionAttributes
