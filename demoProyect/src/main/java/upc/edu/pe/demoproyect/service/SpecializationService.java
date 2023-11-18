@@ -8,6 +8,7 @@ import upc.edu.pe.demoproyect.interfaceservice.SpecializationInterface;
 import upc.edu.pe.demoproyect.repository.SpecializationRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class SpecializationService implements SpecializationInterface {
@@ -41,5 +42,8 @@ public class SpecializationService implements SpecializationInterface {
     public Specialization listById(int id) throws Exception{
         return specializationRepository.findById(id).
                 orElseThrow(()->new Exception("No se encontro el usuario"));
+    }
+    public Optional<Specialization> findById(int id){
+        return  specializationRepository.findById(id);
     }
 }

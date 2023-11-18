@@ -55,7 +55,7 @@ INSERT INTO services (date, hours, hours_start, location, review, st_aceptar, st
 INSERT INTO services (date, hours, hours_start, location, review, st_aceptar, st_anulado, st_pagado, bodyguard_id, client_id, payment_id) VALUES ('2023-12-20', 3, 12, 'Av. Los Rosales 96'     , 0, false, false, false, 4, 1, 1);
 
 SELECT setval('payments_id_seq', (SELECT MAX(id) FROM payments));
-SELECT setval('bodyguards_id_seq', (SELECT MAX(id) FROM specializations));
+SELECT setval('specializations_id_seq', (SELECT MAX(id) FROM specializations));
 SELECT setval('users_id_seq', (SELECT MAX(id) FROM users));
 SELECT setval('roles_id_seq', (SELECT MAX(id) FROM roles));
 SELECT setval('bodyguards_id_seq', (SELECT MAX(id) FROM bodyguards));
